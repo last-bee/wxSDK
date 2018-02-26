@@ -89,10 +89,10 @@ payApi(options)
 ``` javascript
  wx.config({
     debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-    appId: resp.data.appId, // 必填，公众号的唯一标识
-    timestamp: resp.data.timeStamp, // 必填，生成签名的时间戳
-    nonceStr: resp.data.nonceStr, // 必填，生成签名的随机串
-    signature: resp.data.signature, // 必填，签名，见附录1
+    appId: data.appId, // 必填，公众号的唯一标识
+    timestamp: data.timeStamp, // 必填，生成签名的时间戳
+    nonceStr: data.nonceStr, // 必填，生成签名的随机串
+    signature: data.signature, // 必填，签名，见附录1
     jsApiList: ['checkJsApi',
       'onMenuShareTimeline',
       'onMenuShareAppMessage',
@@ -145,5 +145,14 @@ payApi(options)
             alert(res.errMsg);
         });
     });
+    
+    //配置信息data
+    data:{
+      "URLLLLL":"https://m.tamaidan.com/testOAserver/deposit",  
+      "appId":"wxa69d932fd28deb71",
+      "nonceStr":"cde254ba68a44b8c86ef17727fbf1f1e",
+      "signature":"66da685aeed95f309c7feee7c00863ac80f29805",
+      "timeStamp":"1519617353"
+    }
 ```
 * [官方链接](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115)
