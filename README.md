@@ -18,7 +18,7 @@
 ### weixin-js-sdk的配置
 ``` javascript 
 import wx from 'weixin-js-sdk'
-function payApi(data,callback){
+function payApi(data){
    return new Promise((resolve, reject) => {
       wx.config({
         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -50,7 +50,7 @@ function payApi(data,callback){
                     appId: data.appId, //公众号名称，由商户传入
                     timeStamp: data.timeStamp, //时间戳，自1970年以来的秒数
                     nonceStr: data.nonceStr, //随机串
-                    package: data.package,
+                    package: data.package,//订单详情扩展字符串  统一下单接口返回的prepay_id参数值，提交格式如：prepay_id=***
                     signType: "MD5", //微信签名方式：
                     paySign: data.paySign //微信签名
                 },
@@ -65,4 +65,23 @@ function payApi(data,callback){
         })
     })   
 }
+
+//返回data
+ {
+    "appId":"wxa69d932fd28deb71",
+    "nonceStr":"0a1317ac6d5c4cf18cd223b5088d3fdd",
+    "orderId":"102268847030590",
+    "package":"prepay_id=wx20180226111446966f8718dc0989102255",
+    "paySign":"9182F2CB8AAAFB3C694693FF5FF36BFC",
+    "signType":"MD5",
+    "signature":"b15aa9625efb36cda79d6d9e631f1bba8ad53e20",
+    "timeStamp":"1519614886"
+ }
+```
+
+* 调用  
+``` javascript
+payApi(options)
+.then((res)=>{})//支付成功
+.catch((err)=>{})//支付失败
 ```
