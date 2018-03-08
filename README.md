@@ -10,7 +10,7 @@
       redirect_uri: encodeURIComponent(window.location.href),//wx重定向地址 redirect_uri
       response_type: 'code'
   }
-  var url = query.domain + '?appid=' + query.appid + '&redirect_uri=' + 'https://m.tamaidan.com'+_self.$basePath+'/auth' +       '&response_type=code&scope=snsapi_base&state='+query.state+'#wechat_redirect'
+  var url = query.domain + '?appid=' + query.appid + '&redirect_uri='+_self.$basePath+'/auth' +'&response_type=code&scope=snsapi_base&state='+query.state+'#wechat_redirect'
  window.location.href = url//路径跳转
 ```
 * 判断参数有code（根据code获取用户信息）  
